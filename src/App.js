@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
+
+
+
+// pages
+import NoLayout from './components/noLayout'
+import Layout from './components/layout'
+import Login from './pages/login'
+import Master from './pages/master'
+import PedidosRealizados from './pages/pedidosRealizados'
+import Clientes from './pages/clientes'
+import Productos from './pages/productos'
+import E404 from './pages/404'
+//
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    
+    let ruta="pendientes"
+
+    return (
+
+        <BrowserRouter>
+            
+            {/* <NoLayout> */}
+            <Switch>
+                <Route exact path="/" component={Login} />
+
+            {/* </NoLayout> */}
+            
+            <Layout>
+                <Switch>
+                    <Route exact path='/pendientes' component={Master} />
+                    <Route exact path="/realizados" component={PedidosRealizados} />
+                    <Route exact path="/clientes" component={Clientes} />
+                    <Route exact path="/productos" component={Productos} />
+                    <Route  component={E404} />
+                </Switch>
+            </Layout>
+            </Switch>
+        </BrowserRouter>
+    );
 }
 
 export default App;

@@ -1,5 +1,9 @@
 import React from 'react';
 import './css/aside.css'
+import { Link } from 'react-router-dom';
+
+
+
 class OpsionesAside extends React.Component {
     constructor(props){
         super(props)
@@ -10,7 +14,7 @@ class OpsionesAside extends React.Component {
         return (
                 
                 <section className="aside-paginas">
-                <a href={this.props.link}><p>{this.props.nombre}</p></a>
+                <Link to={this.props.link}><p>{this.props.nombre}</p></Link>
                 </section>
                 
             

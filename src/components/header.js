@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 class Header extends React.Component {
     render() {
 
@@ -15,6 +15,7 @@ class Header extends React.Component {
               <ul>
                 <li><a href="/Cuenta">Cuenta</a></li>
                 <li><a href="/">Cerrar Sesión</a></li>
+                {/* <li>< Link to="/">Cerrar Sesión</Link></li> */}
                 
               </ul>
               </div>

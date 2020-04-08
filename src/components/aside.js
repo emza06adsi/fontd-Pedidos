@@ -8,13 +8,13 @@ class Aside extends React.Component {
             <aside className="aside">
                 <nav className="aside-navbar"></nav>
                 
-                <OpsionesAside link="opsiones" nombre="pedidos pendientes"/>
+                <OpsionesAside link="/pendientes" nombre="pedidos pendientes"/>
                 
-                <OpsionesAside link="opsiones" nombre="pedidos realizados"/>
+                <OpsionesAside link="/realizados" nombre="pedidos realizados"/>
                 
-                <OpsionesAside link="opsiones" nombre="clientes"/>
+                <OpsionesAside link="/clientes" nombre="clientes"/>
                 
-                <OpsionesAside link="opsiones" nombre="productos"/>
+                <OpsionesAside link="/productos" nombre="productos"/>
                 
                 
             </aside>

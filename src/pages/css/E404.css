@@ -1,0 +1,30 @@
+.DIVERROR{
+    margin-top: 80px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    /* background-color: grey; */
+    background-color: whitesmoke;
+    text-align: center;
+}
+    
+.DIVERROR h1{
+    color: #3c8dbc;
+    font-size: 200px;
+}
+.DIVERROR p{
+    color:#21526f;
+    font-size: 100px;
+}
+
+.DIVERROR button{
+   background-color:#3d8ab7 ;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 17px;
+    font-size: 25px;
+    padding-left: 40px;
+    padding-right: 40px;
+    cursor: pointer;
+    }
