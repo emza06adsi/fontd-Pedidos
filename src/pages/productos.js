@@ -8,8 +8,39 @@ class Productos extends React.Component {
 
     render() {
         return (
-                        <TablaProductos/>
-            
+            <React.Fragment>
+                <section className="container">
+                    <div className="modal-vista" tabindex="-1" role="dialog">
+
+                        <table id="customers">
+                            <tr>
+                                <th className="sticky">documento del producto</th>
+                                <th className="sticky">nombre del producto</th>
+                                <th className="sticky">cantidad del producto</th>
+                                <th className="sticky">imagen del producto</th>
+
+                            </tr>
+                            <TablaProductos
+                            documento={24}
+                            nombre={"cableutp"}
+                            cantidad={"25"}
+                            imagen={"img"}
+                            />
+
+                        </table>
+
+
+
+                    </div>
+
+                </section>
+
+
+
+            </React.Fragment>
+
+
+
         )
     }
 

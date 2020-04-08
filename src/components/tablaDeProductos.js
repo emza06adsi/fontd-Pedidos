@@ -10,59 +10,14 @@ class TablaProductos extends React.Component {
     render() {
         return (
             <React.Fragment>
-                    <section className="container">
-                        <div className="modal-vista" tabindex="-1" role="dialog">
 
-                        <table id="customers">
-                            <tr>
-                                <th className="sticky">documento del producto</th>
-                                <th className="sticky">nombre del producto</th>
-                                <th className="sticky">cantidad del producto</th>
-                                <th className="sticky">imagen del producto</th>
-                                
-                            </tr>
-                            <tr>
-                            <td>Alfreds Futterkiste</td>
-                                <td>Maria Anders</td>
-                                <td>Germany</td>
-                                <td>Alfreds Futterkiste</td>
-                                
-                            </tr>
-                            <tr>
-                            <td>Alfreds Futterkiste</td>
-                                <td>Maria Anders</td>
-                                <td>Germany</td>
-                                <td>Alfreds Futterkiste</td>
-                                
-                            </tr><tr>
-                            <td>Alfreds Futterkiste</td>
-                                <td>Maria Anders</td>
-                                <td>Germany</td>
-                                <td>Alfreds Futterkiste</td>
-                                
-                            </tr><tr>
-                            <td>Alfreds Futterkiste</td>
-                                <td>Maria Anders</td>
-                                <td>Germany</td>
-                                <td>Alfreds Futterkiste</td>
-                                
-                            </tr><tr>
-                            <td>Alfreds Futterkiste</td>
-                                <td>Maria Anders</td>
-                                <td>Germany</td>
-                                <td>Alfreds Futterkiste</td>
-                                
-                            </tr>
-                            
-                        </table>
+                <tr>
+                    <td>{this.props.documento}</td>
+                    <td>{this.props.nombre}</td>
+                    <td>{this.props.cantidad}</td>
+                    <td>{this.props.imagen}</td>
 
-
-
-                    </div>
-
-                </section>
-
-
+                </tr>
 
             </React.Fragment>
 
