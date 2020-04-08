@@ -1,5 +1,7 @@
 import React from 'react'
 import './css/principal.css'
+import Modalpedidos from '../components/modalpedidos.js'
+
 // import Aside from '../components/aside'
 // import Header from '../components/header'
 
@@ -7,7 +9,11 @@ class PedidosRealizados extends React.Component {
 
     render() {
         return (
-                        <h1>pedidos Realizados</h1>
+            <React.Fragment>
+
+                <Modalpedidos numeroPedido={23} idUsuario={1023955260}  nombreUsuario={"esteban"} />
+
+            </React.Fragment>
            
         )
     }
