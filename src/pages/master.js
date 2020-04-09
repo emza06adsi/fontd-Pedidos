@@ -1,57 +1,49 @@
 import React from 'react'
 import './css/principal.css'
 import Modalpedidos from '../components/modalpedidos.js'
+import api from '../api'
 // import Aside from '../components/aside'
 // import Header from '../components/header'
 class Master extends React.Component {
 
-    constructor(props){
-        console.log("1 constructor()")
+    // constructor(props) {
+    //     console.log("1 constructor()")
 
-        super(props)
-    
-       this.state={
-            data:[
-                {numeroPedido:23,
-                idUsuario:1023955260,
-                nombreUsuario:"esteban",
-                direccionPedido:"xxx",
-                data:"data",
-                mapa:"",},
-                {numeroPedido:24,
-                    idUsuario:1023955265,
-                    nombreUsuario:"mario",
-                    direccionPedido:"xxx",
-                    data:"data",
-                    mapa:"",},
-                {numeroPedido:25,
-                    idUsuario:1023955280,
-                    nombreUsuario:"angie",
-                    direccionPedido:"xxx",
-                    data:"data",
-                    mapa:"",},
-            ]
-        }
-        }
+    //     super(props)
 
-    componentDidMount(){
-        console.log("3 componentDidMount()")
+    state = {
+        loadig: true,
+        error: null,
+        data: undefined
     }
-    
-componentDidUpdate(prevProps, prevState){
-    console.log("5 componentDidUpdate")
-console.log({ 
-    prevProps:prevProps, 
-    prevState:prevState
-})
-}
+    // }
 
-componentWillUnmount(){
-    console.log("componentWillUnmount  ")
-    clearTimeout();
-}
+    componentDidMount() {
+        this.fetchData()
+    }
+
+    fetchData = async () => {
+        this.setState({ loadig: true, error: null })
+
+        try {
+            // const data = await api.tienda.list()
+            // let data2 = new Array()
+            // data2[0] = data.body
+           let response =await fetch("http://localhost:3001/api/pedidos/pedido/inactivos");
+           let data =await response.json()
+            this.setState({ loadig: false, data:data.body })
+
+        } catch (error) {
+            this.setState({ loadig: false, error: error })
+        }
+    }
+
     render() {
-        console.log("2 render()")
+
+        if (this.state.loadig === true) {
+            return ("loadig ---")
+        }
+
         return (
             <React.Fragment>
                 <section className="container">
@@ -66,6 +58,7 @@ componentWillUnmount(){
                                 <th className="sticky">ver pedido</th>
                                 <th className="sticky">buscar en el mapa</th>
                             </tr>
+
                             <Modalpedidos pedidos={this.state.data} />
                             {/* { this.state.data.map((modalpedidos)=>{
                              
@@ -81,7 +74,7 @@ componentWillUnmount(){
                              )
                              
                             }) } */}
-                            
+
 
                         </table>
 

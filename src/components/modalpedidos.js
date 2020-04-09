@@ -11,16 +11,17 @@ class Modalpedidos extends React.Component {
     render() {
         return (
             <React.Fragment>
+                {/* <h1>{ this.props.pedidos}</h1> */}
                 {
                     this.props.pedidos.map((pedido) => {
                         return (
-                            <tr key={pedido.numeroPedido}>
-                                <td>{pedido.numeroPedido}</td>
-                                <td>{pedido.idUsuario}</td>
-                                <td>{pedido.nombreUsuario}</td>
-                                <td>{pedido.direccionPedido}</td>
-                                <td>{pedido.data}</td>
-                                <td>{pedido.mapa}</td>
+                            <tr key={pedido.pedido.ped_id}>
+                                <td>{pedido.ped_id}</td>
+                                <td>{pedido.us_id}</td>
+                                <td>{pedido.us_nombre}</td>
+                                <td>{pedido.us_direccion}</td>
+                                {/* <td>{pedido.data}</td>
+                                <td>{pedido.mapa}</td> */}
                             </tr>
                         )
                     })
