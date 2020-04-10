@@ -11,14 +11,23 @@ class TablaClientes extends React.Component {
     render() {
         return (
             <React.Fragment>
-            
-            <tr>
-                    <td>{this.props.documento}</td>
-                        <td>{this.props.nombre}</td>
-                        <td>{this.props.correo}</td>
-                        <td>{this.props.direccion}</td>
-                        
-                    </tr>
+
+                {
+                    // <h1>{"datos"}</h1>
+                // <h1>{this.props.clientes.body}</h1>
+                    this.props.clientes["body"][0].map((cliente) => {
+                        return (
+
+                            
+                            <tr key={cliente.us_id}>
+                                <td>{cliente.us_id}</td>
+                                <td>{cliente.us_nombre}</td>
+                                <td>{cliente.us_correo}</td>
+                                <td>{cliente.us_direccion}</td>
+                            </tr>
+                        )
+                    })
+                }
 
 
             </React.Fragment>
@@ -31,6 +40,13 @@ class TablaClientes extends React.Component {
 
 export default TablaClientes;
 
+//     <tr>
+                            //     <td>{this.props.documento}</td>
+                            //     <td>{this.props.nombre}</td>
+                            //     <td>{this.props.correo}</td>
+                            //     <td>{this.props.direccion}</td>
+
+                            // </tr>
 
 
 

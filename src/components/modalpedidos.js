@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useDebugValue } from 'react'
 import './css/modalPedidos.css'
 // import Aside from '../components/aside'
 // import Header from '../components/header'
@@ -6,22 +6,26 @@ class Modalpedidos extends React.Component {
 
     constructor(props) {
         super(props)
+        this.numero = 0
     }
 
     render() {
         return (
             <React.Fragment>
-                {/* <h1>{ this.props.pedidos}</h1> */}
+
+
                 {
-                    this.props.pedidos.map((pedido) => {
+
+                    this.props.pedidos.body[0].map((pedido) => {
                         return (
-                            <tr key={pedido.pedido.ped_id}>
+
+                            <tr key={pedido.ped_id}>
                                 <td>{pedido.ped_id}</td>
                                 <td>{pedido.us_id}</td>
                                 <td>{pedido.us_nombre}</td>
                                 <td>{pedido.us_direccion}</td>
-                                {/* <td>{pedido.data}</td>
-                                <td>{pedido.mapa}</td> */}
+                                <td><button className="btn btn-primary">contenido del pedido</button></td>
+                                <td><button className="btn btn-warning">buscar en pams</button></td>
                             </tr>
                         )
                     })

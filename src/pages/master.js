@@ -6,42 +6,48 @@ import api from '../api'
 // import Header from '../components/header'
 class Master extends React.Component {
 
-    // constructor(props) {
-    //     console.log("1 constructor()")
+    constructor(props) {
+        console.log("1 constructor()")
 
-    //     super(props)
+        super(props)
 
-    state = {
-        loadig: true,
+this.state = {
+        loading: true,
         error: null,
         data: undefined
     }
-    // }
+    }
 
     componentDidMount() {
         this.fetchData()
     }
 
     fetchData = async () => {
-        this.setState({ loadig: true, error: null })
+        this.setState({ loading: true, error: null })
 
         try {
-            // const data = await api.tienda.list()
-            // let data2 = new Array()
-            // data2[0] = data.body
-           let response =await fetch("http://localhost:3001/api/pedidos/pedido/inactivos");
-           let data =await response.json()
-            this.setState({ loadig: false, data:data.body })
+            const data = await api.tienda.listPedidosActivos()
+            this.setState({ loading: false, data:data })
 
         } catch (error) {
-            this.setState({ loadig: false, error: error })
+            this.setState({ loading: false, error: error })
         }
+    }
+
+    pedidos() {
+        if (this.state.data.body[0] == "") {
+            return <h1> no tenemos pedidos pendientes </h1>
+        } else {
+            return <Modalpedidos pedidos={this.state.data} />
+        }
+
+
     }
 
     render() {
 
-        if (this.state.loadig === true) {
-            return ("loadig ---")
+        if (this.state.loading === true) {
+            return ("loading ---")
         }
 
         return (
@@ -59,21 +65,8 @@ class Master extends React.Component {
                                 <th className="sticky">buscar en el mapa</th>
                             </tr>
 
-                            <Modalpedidos pedidos={this.state.data} />
-                            {/* { this.state.data.map((modalpedidos)=>{
-                             
-                             return(
-                             <Modalpedidos 
-                                modalpedidosnumeroPedido={23}
-                                idUsuario={1023955260}
-                                nombreUsuario={"esteban"}
-                                direccionPedido={"xxx"}
-                                data={"data"}
-                                mapa={""} /> 
-                            
-                             )
-                             
-                            }) } */}
+                            {this.pedidos()}
+
 
 
                         </table>
@@ -95,3 +88,11 @@ class Master extends React.Component {
 }
 
 export default Master;
+
+// <tr>
+//                                 <th className="sticky">documento del producto</th>
+//                                 <th className="sticky">nombre del producto</th>
+//                                 <th className="sticky">cantidad del producto</th>
+//                                 <th className="sticky">imagen del producto</th>
+
+//                             </tr>

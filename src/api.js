@@ -23,9 +23,21 @@ async function callApi(endpoint, options = {}) {
 
 const api = {
   tienda: {
-    list() {
-        // return fetch('http://localhost:3001/api/pedidos/')
+    listPedidosActivos() {
+      // return fetch('http://localhost:3001/api/pedidos/')
+      return callApi('/api/pedidos/pedido/activo');
+    
+    },
+    listPedidosInactivos() {
+      // return fetch('http://localhost:3001/api/pedidos/')
       return callApi('/api/pedidos/pedido/inactivos');
+    },
+    listClientes() {
+      // return fetch('http://localhost:3001/api/pedidos/')
+      return callApi('/api/user/');
+    }, listProductos() {
+      // return fetch('http://localhost:3001/api/pedidos/')
+      return callApi('/api/tienda/');
     },
     create(badge) {
       return callApi(`/badges`, {
