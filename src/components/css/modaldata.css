@@ -22,7 +22,7 @@
 }
 
 .modal-overlay{
-    width: 500px;
+    width: 60%;
     background-color: white;
     animation:modalIn .8s forwards ;
     color: #000;

@@ -38,6 +38,9 @@ const api = {
     }, listProductos() {
       // return fetch('http://localhost:3001/api/pedidos/')
       return callApi('/api/tienda/');
+    }, listProductosPorId(id) {
+      // return fetch('http://localhost:3001/api/pedidos/')
+      return callApi(`/api/pedidos/${id}`);
     },
     create(badge) {
       return callApi(`/badges`, {
