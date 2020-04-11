@@ -1,16 +1,56 @@
 import React, { useDebugValue } from 'react'
 import './css/modalPedidos.css'
-// import Aside from '../components/aside'
+import Modaldata from '../components/modaldata'
+import api from '../api'
 // import Header from '../components/header'
 class Modalpedidos extends React.Component {
 
     constructor(props) {
         super(props)
-        this.numero = 0
+
+        this.state = {
+            loading: true,
+            error: null,
+            data: undefined
+        }
+
+    }
+
+    componentDidMount() {
+        this.setState({ loading: true, error: null })
+    }
+     datosPedido(event) {
+        this.fetchData()
+        
+        
+        // const data = await api.tienda.listPedidosActivos()
+        // // this.state.data=data
+        // this.setState({ loading: false, data: JSON.stringify(data) })
+        // alert(JSON.stringify(this.state.data))
+     
+        // // this.fetchData()
+
+    }
+
+    fetchData = async () => {
+        this.setState({ loading: true, error: null })
+        try {
+            const data = await api.tienda.listPedidosActivos()
+            this.setState({ loading: false, data: JSON.stringify(data) })
+            document.getElementById('modal-overlay').style.animation = 'modalIn .8s forwards'
+            document.getElementById("modal").classList.add('active')
+        } catch (error) {
+            this.setState({ loading: false, error: error })
+        }
+    }
+
+    verModal() {
+
     }
 
     render() {
         return (
+
             <React.Fragment>
 
 
@@ -24,15 +64,16 @@ class Modalpedidos extends React.Component {
                                 <td>{pedido.us_id}</td>
                                 <td>{pedido.us_nombre}</td>
                                 <td>{pedido.us_direccion}</td>
-                                <td><button className="btn btn-primary">contenido del pedido</button></td>
+                                <td><button id={pedido.ped_id} className="btn btn-primary" onClick={this.componentDidUpdate} >contenido del pedido</button></td>
                                 <td><button className="btn btn-warning">buscar en pams</button></td>
                             </tr>
                         )
                     })
                 }
 
+                <Modaldata data={this.state.data}/>
 
-
+                {/* {this.datosPedido} */}
 
 
 

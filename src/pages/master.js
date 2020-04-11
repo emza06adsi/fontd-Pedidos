@@ -11,11 +11,11 @@ class Master extends React.Component {
 
         super(props)
 
-this.state = {
-        loading: true,
-        error: null,
-        data: undefined
-    }
+        this.state = {
+            loading: true,
+            error: null,
+            data: undefined
+        }
     }
 
     componentDidMount() {
@@ -27,7 +27,7 @@ this.state = {
 
         try {
             const data = await api.tienda.listPedidosActivos()
-            this.setState({ loading: false, data:data })
+            this.setState({ loading: false, data: data })
 
         } catch (error) {
             this.setState({ loading: false, error: error })
