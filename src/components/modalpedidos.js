@@ -1,8 +1,8 @@
-import React, { useDebugValue } from 'react'
+import React from 'react'
 import './css/modalPedidos.css'
-import Modaldata from '../components/modaldata'
 import api from '../api'
-// import Header from '../components/header'
+import './css/modaldata.css'
+
 class Modalpedidos extends React.Component {
 
     constructor(props) {
@@ -11,36 +11,50 @@ class Modalpedidos extends React.Component {
         this.state = {
             loading: true,
             error: null,
-            data: undefined
+            data: undefined,
+            array: new Array()
         }
-
         this.handleClick = this.handleClick.bind(this)
     }
 
     handleClick(event) {
         this.fetchData(event.target.id)
     }
-    // componentDidMount() {
-    //     this.setState({ loading: true, error: null })
-    // }
-    //  datosPedido(event) {
-    //     this.fetchData(event.target.id)
-
-
-    //     // const data = await api.tienda.listPedidosActivos()
-    //     // // this.state.data=data
-    //     // this.setState({ loading: false, data: JSON.stringify(data) })
-    //     // alert(JSON.stringify(this.state.data))
-
-    //     // // this.fetchData()
-
-    // }
-
     fetchData = async (id) => {
         this.setState({ loading: true, error: null })
         try {
             const data = await api.tienda.listProductosPorId(id)
-            this.setState({ loading: false, data: data.body[0] })
+            this.setState({ loading: false, data: data })
+
+            let $data = "";
+            let $total = 0
+            this.state.data.body[0].map((data) => {
+
+                $data += `
+                <tr>
+                    <td>${data.paq_id}</td>
+                    <td>${data.pro_nombre}</td>
+                    <td>${data.pro_valor}</td>
+                    <td>${data.paq_cantidad}</td>
+                    <td>${data.pro_valor * data.paq_cantidad}</td>
+                    </tr>
+                `
+                $total += data.pro_valor * data.paq_cantidad
+
+            })
+
+            $data += `
+                <tr>
+                    <th>TOTAL</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th>${$total}</th>
+                </tr>
+                `
+
+            document.getElementById("tabla").innerHTML = $data
+
             document.getElementById('modal-overlay').style.animation = 'modalIn .8s forwards'
             document.getElementById("modal").classList.add('active')
 
@@ -50,12 +64,15 @@ class Modalpedidos extends React.Component {
         }
     }
 
-    verModal() {
-
+    cerrarModal() {
+        document.getElementById('modal-overlay').style.animation = 'modalOut .8s forwards'
+        document.getElementById("modal").classList.remove('active')
     }
+
 
     render() {
         return (
+
 
             <React.Fragment>
 
@@ -77,9 +94,34 @@ class Modalpedidos extends React.Component {
                     })
                 }
 
-                <Modaldata datosUnoDos={this.state.data} />
+                <section className="modal " id="modal">
 
-                {/* {this.datosPedido} */}
+                    <article className="modal-overlay" id="modal-overlay">
+
+                        <table id="customers">
+                            <thead>
+                                <tr>
+                                    <th className="sticky">id</th>
+                                    <th className="sticky">nombre</th>
+                                    <th className="sticky">presio</th>
+                                    <th className="sticky">cantidad</th>
+                                    <th className="sticky">valor cantidad</th>
+
+                                </tr>
+                            </thead>
+                            <tbody id="tabla">
+
+                            </tbody>
+                        </table>
+
+                        <div className="modal-buttons">
+                            <button onClick={this.cerrarModal} className="form-control btn btn-success">volver</button>
+                        </div>
+
+                    </article>
+
+                </section>
+
 
 
 
@@ -92,40 +134,3 @@ class Modalpedidos extends React.Component {
 }
 
 export default Modalpedidos;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{/* <section className="container">
-                    <div className="modal-vista" tabindex="-1" role="dialog">
-
-                        <div className="" role="document">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <h5 className="modal-title">Modal title</h5>
-                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div className="modal-body">
-                                    <p>Modal body text goes here.</p>
-                                </div>
-                                <div className="modal-footer">
-                                    <button type="button" className="btn btn-primary">Save changes</button>
-                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </section> */}

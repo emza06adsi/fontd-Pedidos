@@ -54,17 +54,7 @@ class Modaldata extends React.Component {
                                 <th className="sticky">valor</th>
 
                             </tr>
-                            {this.props.datosUnoDos.map((data) => {
-                                return (
-
-                                    <tr key={data.paq_id}>
-                                        <td>{data.paq_id}</td>
-                                        <td>{data.paq_id}</td>
-                                        <td>{data.paq_id}</td>
-                                        <td>{data.paq_id}</td>
-                                    </tr>
-                                )
-                            })}
+                            
                             {/* {JSON.parse(this.datos[0])} */}
                         </table>
 
@@ -73,17 +63,7 @@ class Modaldata extends React.Component {
                         </div>
 
                     </article>
-                    {/* <section className="modal"> */}
-                    {/*                 
-                <h1>titulo</h1>
-                        <p>hols estabn meza beaycuur</p>
-                 
-                    <div className="modal-buttons "> 
-                 <button onClick={eliminar} className="btn btn-success">volver</button>
-                    </div> */}
-
-                    {/* </section> */}
-
+                  
                 </section>
 
             </React.Fragment>

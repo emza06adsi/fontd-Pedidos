@@ -65,6 +65,7 @@ class Master extends React.Component {
                                 <th className="sticky">buscar en el mapa</th>
                             </tr>
 
+         
                             {this.pedidos()}
 
 
