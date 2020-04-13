@@ -2,6 +2,9 @@ import React from 'react'
 import './css/principal.css'
 import Modalpedidos from '../components/modalpedidos.js'
 import api from '../api'
+import PageLoading from '../components/PageLoading' 
+import PageError from '../components/PageError'
+
 // import Aside from '../components/aside'
 // import Header from '../components/header'
 class PedidosRealizados extends React.Component {
@@ -47,8 +50,13 @@ class PedidosRealizados extends React.Component {
     render() {
 
         if (this.state.loading === true) {
-            return ("loading ---")
-        }
+            return <PageLoading/> 
+
+        }else if(this.state.error){
+            return (<PageError />);
+            // return `Eror: ${this.state.error.message}`;
+          }
+        
 
         return (
             <React.Fragment>
@@ -62,7 +70,7 @@ class PedidosRealizados extends React.Component {
                                 <th className="sticky">nombre del usuario</th>
                                 <th className="sticky">direccion del pedido</th>
                                 <th className="sticky">ver pedido</th>
-                                <th className="sticky">buscar en el mapa</th>
+                                
                             </tr>
 
                             {this.pedidos()}

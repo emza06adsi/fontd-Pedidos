@@ -1,7 +1,9 @@
 import React from 'react'
-import './css/principal.css'
 import api from '../api'
 import TablaProductos from '../components/tablaDeProductos'
+import PageLoading from '../components/PageLoading' 
+import PageError from '../components/PageError'
+import NewProducto from '../components/formNewProducto'
 // import Header from '../components/header'
 
 class Productos extends React.Component {
@@ -44,15 +46,29 @@ class Productos extends React.Component {
         }
     }
 
+    activarModal(){
+        document.getElementById('modal-overlay').style.animation = 'modalIn .8s forwards'
+            document.getElementById("modal").classList.add('active')
+
+    }
+
     render() {
 
         if(this.state.loading === true){
-            return("loading....")
-        }
+            return < PageLoading />
+
+        }else if(this.state.error){
+            return (<PageError />);
+            // return `Eror: ${this.state.error.message}`;
+          }
+
 
         return (
             <React.Fragment>
                 <section className="container">
+                   <div className="containerProductos">
+                    <button onClick={this.activarModal}>+</button>
+                    </div>
                     <div className="modal-vista" tabindex="-1" role="dialog">
 
                         <table id="customers">
@@ -66,22 +82,17 @@ class Productos extends React.Component {
                                 </tr>
                             </thead>
                             <tbody id="tbody">
-                                {/* <TablaProductos
-                                    documento={24}
-                                    nombre={"cableutp"}
-                                    cantidad={"25"}
-                                    imagen={"img"}
-                                /> */}
+
                             </tbody>
                         </table>
 
-
+                        
 
                     </div>
 
                 </section>
 
-
+                <NewProducto/>
 
             </React.Fragment>
 

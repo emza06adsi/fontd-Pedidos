@@ -4,21 +4,21 @@
     align-items: center;
     flex-direction: column;
     /* background-color: grey; */
-    background-color: whitesmoke;
+    /* background-color: whitesmoke; */
     text-align: center;
 }
     
 .DIVERROR h1{
-    color: #3c8dbc;
+    color: #003946;
     font-size: 200px;
 }
 .DIVERROR p{
-    color:#21526f;
+    color:#003946;
     font-size: 100px;
 }
 
 .DIVERROR button{
-   background-color:#3d8ab7 ;
+   background-color:#003946 ;
     color: white;
     border: none;
     border-radius: 10px;

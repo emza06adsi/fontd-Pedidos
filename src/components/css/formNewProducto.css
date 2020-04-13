@@ -1,0 +1,80 @@
+.modalforms-overlay{
+  width: 50%;
+  background-color: white;
+  animation:modalIn .8s forwards ;
+  color: #000;
+  padding: 2%;
+  border-radius: 15px;
+  font-family: Arial;
+}
+
+.cerrarBtn{
+  display: flex;
+  /* align-items: center; */
+  flex-direction: row-reverse;
+}
+.cerrarBtn button{
+  width: 25px;
+  outline: none;
+  background-color: red;
+  border-radius: 5px;
+}
+
+.cerrarBtn button:hover{
+  background-color: black;
+  color: white;
+}
+
+
+.camposForm{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-bottom: 3px;
+
+}
+
+.camposForm input{
+  outline:0px;
+  width: 50%;
+  border: none;
+  border-bottom:1px solid #00242c ; 
+  border-radius: 0;
+  padding: 5px;
+  margin-bottom: 3px;
+}
+.camposForm select{
+  padding: 5px;
+  outline:0px;
+  width: 50%;
+  border: none;
+  border-bottom:1px solid #00242c ; 
+  border-radius: 0;
+  margin-bottom: 3px;
+}
+.modal-buttons-form{
+  margin-top: 15px;
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+
+.imagenSubir{
+  display: none;
+}
+
+.containerProductos{
+  display: flex;
+ flex-direction: row-reverse; 
+}
+.containerProductos button{
+  /* position: fixed; */
+  width: 25px;
+  outline: none;
+  background-color: white;
+  border-radius: 5px;
+}

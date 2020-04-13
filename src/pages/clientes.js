@@ -2,6 +2,13 @@ import React from 'react'
 import './css/principal.css'
 import api from '../api'
 import TablaCliente from '../components/tablaClientes'
+import PageLoading from '../components/PageLoading' 
+import PageError from '../components/PageError'
+
+// else if(this.state.error){
+//     return (<PageError />);
+//     // return `Eror: ${this.state.error.message}`;
+//   }
 // import Header from '../components/header'
 
 class PedidosRealizados extends React.Component {
@@ -49,8 +56,12 @@ class PedidosRealizados extends React.Component {
     render() {
 
         if (this.state.loading === true) {
-            return ("loading ---")
-        }
+            return < PageLoading />
+
+        }else if(this.state.error){
+                return (<PageError />);
+                // return `Eror: ${this.state.error.message}`;
+              }
 
         return (
             <React.Fragment>
