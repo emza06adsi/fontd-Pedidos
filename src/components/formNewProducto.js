@@ -5,8 +5,25 @@ import './css/formNewProducto.css'
 
 class NewProducto extends React.Component {
 
+    constructor(props) {
+        super(props)
 
-    handleFiles() {
+        this.state = {
+            loading: true,
+            error: null,
+            data: undefined,
+            array: new Array()
+        }
+        this.handleClick = this.handleClick.bind(this)
+    }
+
+    handleClick() {
+        this.handleFil()
+    }
+
+    handleFil() {
+        // this.setState({ loading: true, error: null })
+
         const fileElem = document.getElementById("fileElem"),
             fileList = document.getElementById("fileList");
         fileElem.click();
@@ -18,10 +35,12 @@ class NewProducto extends React.Component {
                 fileList.innerHTML = "<p>No fue selecionado ningun archivo!</p>";
             } else {
                 fileList.innerHTML = "";
+                this.data = this.files;
                 for (let i = 0; i < this.files.length; i++) {
 
                     const img = document.createElement("img");
                     img.src = URL.createObjectURL(this.files[i]);
+                    document.cookie = URL.createObjectURL(this.files[i]);
                     img.height = 60;
                     img.onload = function () {
                         URL.revokeObjectURL(this.src);
@@ -33,12 +52,21 @@ class NewProducto extends React.Component {
 
     }
 
-cerrarModal(){
-    document.getElementById('modal-overlay').style.animation = 'modalOut .8s forwards'
-    document.getElementById("modal").classList.remove('active')
-    // https://codepen.io/Cepm10/pen/jOOGeBd
-}
+    cerrarModal() {
+        document.getElementById('modal-overlay').style.animation = 'modalOut .8s forwards'
+        document.getElementById("modal").classList.remove('active')
+        // https://codepen.io/Cepm10/pen/jOOGeBd
+    }
 
+    handleSubmit = e => {
+        e.preventDefault();
+        alert()
+        var img = new Image();
+        img.src =document.cookie
+        img.height = 60;
+        document.getElementById("prueba").appendChild(img)
+        
+    };
     render() {
 
         return (
@@ -51,7 +79,7 @@ cerrarModal(){
                             <button onClick={this.cerrarModal}>x</button>
                         </div>
 
-                        <form>
+                        <form onSubmit={this.handleSubmit}>
                             <section className="">
 
                                 <div className="camposForm">
@@ -81,7 +109,7 @@ cerrarModal(){
                                 <div className="camposForm">
                                     <label for="exampleInputEmail1">imagen del producto:</label>
                                     <input type="file" id="fileElem" multiple accept="image/*" className="imagenSubir"></input>
-                                    <img onClick={this.handleFiles} src="https://img.icons8.com/color/48/000000/folder-invoices.png" />
+                                    <img onClick={this.handleClick} src="https://img.icons8.com/color/48/000000/folder-invoices.png" />
                                     <div id="fileList">
 
                                     </div>
@@ -91,8 +119,9 @@ cerrarModal(){
                             </section>
 
                             <div className="modal-buttons-form">
-                                <button  className="form-control btn btn-success">ingresar producto</button>
+                                <button className="form-control btn btn-success">ingresar producto</button>
                             </div>
+                            <div id="prueba"></div>
                         </form>
 
                     </article>
