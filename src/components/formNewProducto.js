@@ -1,28 +1,51 @@
 import React from 'react'
 import './css/formNewProducto.css'
+import axios from 'axios'
 
-
-
+var datosprueba = ""
 class NewProducto extends React.Component {
 
     constructor(props) {
         super(props)
 
-        this.state = {
-            loading: true,
-            error: null,
-            data: undefined,
-            array: new Array()
-        }
-        this.handleClick = this.handleClick.bind(this)
-    }
+        this.state = {};
 
-    handleClick() {
-        this.handleFil()
+
+        this.handleChange = this.handleChange.bind(this)
     }
+    handleChange = e => {
+        if (e.target.name == "file") {
+            this.getBase64(e.target.files[0])
+        }
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+    };
+
+    getBase64 = file => {
+        return new Promise(resolve => {
+            let baseURL = "";
+
+            let reader = new FileReader();
+
+
+            reader.readAsDataURL(file);
+
+
+            reader.onload = () => {
+
+
+                baseURL = reader.result;
+                alert(baseURL);
+                datosprueba = baseURL
+                resolve(baseURL);
+            };
+
+        });
+    };
+
 
     handleFil() {
-        // this.setState({ loading: true, error: null })
 
         const fileElem = document.getElementById("fileElem"),
             fileList = document.getElementById("fileList");
@@ -55,18 +78,26 @@ class NewProducto extends React.Component {
     cerrarModal() {
         document.getElementById('modal-overlay').style.animation = 'modalOut .8s forwards'
         document.getElementById("modal").classList.remove('active')
-        // https://codepen.io/Cepm10/pen/jOOGeBd
     }
 
-    handleSubmit = e => {
+    handleSubmit = async e => {
         e.preventDefault();
-        alert()
-        var img = new Image();
-        img.src =document.cookie
-        img.height = 60;
-        document.getElementById("prueba").appendChild(img)
-        
+        alert(datosprueba)
+        let datosEnvio = {
+            codigo: this.state.codigo,
+            nombre: this.state.nombre,
+            cantidad: this.state.cantida,
+            precio: this.state.precio,
+            file: datosprueba
+        }
+        axios.post("http://localhost:3001/api/tienda/", datosEnvio, {
+
+        }).then(resÇ => {
+            alert("error")
+        })
+
     };
+
     render() {
 
         return (
@@ -84,11 +115,21 @@ class NewProducto extends React.Component {
 
                                 <div className="camposForm">
                                     <label for="exampleInputEmail1">codigo del producto:</label>
-                                    <input required type="number" placeholder="codigo del producto"></input>
+                                    <input
+                                        name="codigo"
+                                        onChange={this.handleChange}
+                                        value={this.state.codigoProducto}
+                                        required
+                                        type="number"
+                                        placeholder="codigo del producto"
+                                    ></input>
                                 </div>
                                 <div className="camposForm">
                                     <label for="exampleInputEmail1">tipo del producto:</label>
-                                    <select value="" >
+                                    <select
+                                        name="select"
+                                        value={this.state.select}
+                                        onChange={this.handleChange}>
                                         <option value="papeleria">papeleria</option>
                                         <option value="tecnologia">tecnologia</option>
                                         <option value="otro">otro</option>
@@ -96,20 +137,44 @@ class NewProducto extends React.Component {
                                 </div>
                                 <div className="camposForm">
                                     <label for="exampleInputEmail1">nombre del producto:</label>
-                                    <input required type="text" placeholder="nombre del producto"></input>
+                                    <input
+                                        name="nombre"
+                                        onChange={this.handleChange}
+                                        value={this.state.nombreProducto}
+                                        required type="text"
+                                        placeholder="nombre del producto"
+                                    ></input>
                                 </div>
                                 <div className="camposForm">
                                     <label for="exampleInputEmail1">cantidad del producto:</label>
-                                    <input required type="number" placeholder="cantidad del producto"></input>
+                                    <input
+                                        name="cantidad"
+                                        onChange={this.handleChange}
+                                        value={this.state.cantidadProducto}
+                                        required type="number"
+                                        placeholder="cantidad del producto"></input>
                                 </div>
                                 <div className="camposForm">
                                     <label for="exampleInputEmail1">precio del producto:</label>
-                                    <input required type="number" placeholder="precio del producto"></input>
+                                    <input
+                                        name="precio"
+                                        onChange={this.handleChange}
+                                        value={this.state.precioProducto}
+                                        required type="number"
+                                        placeholder="precio del producto"
+                                    ></input>
                                 </div>
                                 <div className="camposForm">
                                     <label for="exampleInputEmail1">imagen del producto:</label>
-                                    <input type="file" id="fileElem" multiple accept="image/*" className="imagenSubir"></input>
-                                    <img onClick={this.handleClick} src="https://img.icons8.com/color/48/000000/folder-invoices.png" />
+                                    <input
+                                        type="file"
+                                        value={this.state.file}
+                                        name="file"
+                                        id="fileElem"
+                                        multiple accept="image/*"
+                                        className="imagenSubir"
+                                        onChange={this.handleChange}></input>
+                                    <img onClick={this.handleFil} src="https://img.icons8.com/color/48/000000/folder-invoices.png" />
                                     <div id="fileList">
 
                                     </div>
