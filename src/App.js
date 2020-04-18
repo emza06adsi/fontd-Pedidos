@@ -15,28 +15,26 @@ import Productos from './pages/productos'
 import E404 from './pages/404'
 //
 function App() {
-    
-    let ruta="pendientes"
+
+    let ruta = "pendientes"
 
     return (
 
         <BrowserRouter>
-            
-            {/* <NoLayout> */}
-            <Switch>
-                <Route exact path="/" component={Login} />
 
-            {/* </NoLayout> */}
-            
-            <Layout>
                 <Switch>
-                    <Route exact path='/pendientes' component={Master} />
-                    <Route exact path="/realizados" component={PedidosRealizados} />
-                    <Route exact path="/clientes" component={Clientes} />
-                    <Route exact path="/productos" component={Productos} />
-                    <Route  component={E404} />
-                </Switch>
-            </Layout>
+                    <Route exact path="/" component={Login} />
+
+      
+                <Layout>
+                    <Switch>
+                        <Route exact path='/pendientes' component={Master} />
+                        <Route exact path="/realizados" component={PedidosRealizados} />
+                        <Route exact path="/clientes" component={Clientes} />
+                        <Route exact path="/productos" component={Productos} />
+                        <Route component={E404} />
+                    </Switch>
+                </Layout>
             </Switch>
         </BrowserRouter>
     );

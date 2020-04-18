@@ -82,17 +82,19 @@ class NewProducto extends React.Component {
 
     handleSubmit = async e => {
         e.preventDefault();
-        alert(datosprueba)
+        // alert(datosprueba)
         let datosEnvio = {
             codigo: this.state.codigo,
             nombre: this.state.nombre,
-            cantidad: this.state.cantida,
+            tipo:this.state.select,
+            cantidad: this.state.cantidad,
             precio: this.state.precio,
             file: datosprueba
         }
+        // alert(JSON.stringify(datosEnvio))
         axios.post("http://localhost:3001/api/tienda/", datosEnvio, {
 
-        }).then(resÇ => {
+        }).then(res => {
             alert("error")
         })
 
@@ -130,6 +132,7 @@ class NewProducto extends React.Component {
                                         name="select"
                                         value={this.state.select}
                                         onChange={this.handleChange}>
+                                        <option value="">--SELECCIONE--</option>
                                         <option value="papeleria">papeleria</option>
                                         <option value="tecnologia">tecnologia</option>
                                         <option value="otro">otro</option>
