@@ -26,7 +26,7 @@ const api = {
     listPedidosActivos() {
       // return fetch('http://localhost:3001/api/pedidos/')
       return callApi('/api/pedidos/pedido/activo');
-    
+
     },
     listPedidosInactivos() {
       // return fetch('http://localhost:3001/api/pedidos/')
@@ -42,6 +42,7 @@ const api = {
       // return fetch('http://localhost:3001/api/pedidos/')
       return callApi(`/api/pedidos/${id}`);
     },
+    
     create(badge) {
       return callApi(`/badges`, {
         method: 'POST',

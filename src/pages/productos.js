@@ -35,7 +35,7 @@ class Productos extends React.Component {
                     <td>${productos.pro_id}</td>
                     <td>${productos.pro_nombre}</td>
                     <td>${productos.pro_cantidad}</td>
-                    <td>${"imagen"}</td>
+                    <td><img  src="${productos.pro_imagen}" height="35" width="50"  ></td>
                 </tr>
                 `
 

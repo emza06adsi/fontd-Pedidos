@@ -1,5 +1,6 @@
 import React from 'react'
 import './css/formNewProducto.css'
+import api from '../api'
 import axios from 'axios'
 
 var datosprueba = ""
@@ -91,12 +92,13 @@ class NewProducto extends React.Component {
             precio: this.state.precio,
             file: datosprueba
         }
-        // alert(JSON.stringify(datosEnvio))
+        // api.tienda.crearProducto(datosEnvio,axios)
         axios.post("http://localhost:3001/api/tienda/", datosEnvio, {
-
         }).then(res => {
-            alert("error")
+          alert("error")
         })
+        // alert(JSON.stringify(datosEnvio))
+        
 
     };
 
