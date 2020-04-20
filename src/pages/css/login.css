@@ -1,4 +1,4 @@
-.modal-btn {
+.login-btn {
     text-align: center;
     /* padding: .6em .8em .8em; */
     border: none;
@@ -19,20 +19,20 @@
     width: 50%;
 }
 
-.modal-btn:hover{
+.login-btn:hover{
     background-color:#007bff ;
     color: #ffffff;
 }
 
-.modal-btn.primary {
+.login-btn.primary {
     background: #7dc800;
 }
 
-.modal-btn.warning {
+.login-btn.warning {
     background: #ff463b;
 }
 
-.modal-btn:active {
+.login-btn:active {
     transform: scale(.9);
 }
 
@@ -58,7 +58,7 @@
     display: flex;
 }
 
-.modal {
+.login {
     color: white;
     width: 500px;
     background: #00242c;
@@ -80,18 +80,18 @@
     flex-direction: column;
 }
 
-.modal-content {
+.login-content {
     display: flex;
 }
 
-.modal-content img {
+.login-content img {
     width: 170px;
     height: 256px;
     object-fit: cover;
     margin-right: 15px;
 }
 
-.modal-content p {
+.login-content p {
     align-self: center;
 }
 /* input {
@@ -106,7 +106,7 @@
 
 /*@keyframes animationIn {*/
 
-@keyframes modalIn {
+@keyframes loginIn {
     0% {
         transform: translateY(-3000px);
     }
@@ -127,7 +127,7 @@
 
 /*@keyframes animationOut {*/
 
-@keyframes modalOut {
+@keyframes loginOut {
     0% {
         transform: translateY(5px);
     }

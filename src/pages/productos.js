@@ -4,6 +4,7 @@ import TablaProductos from '../components/tablaDeProductos'
 import PageLoading from '../components/PageLoading' 
 import PageError from '../components/PageError'
 import NewProducto from '../components/formNewProducto'
+import UpdateProducto from '../components/updateProducto'
 // import Header from '../components/header'
 
 class Productos extends React.Component {
@@ -35,9 +36,12 @@ class Productos extends React.Component {
                     <td>${productos.pro_id}</td>
                     <td>${productos.pro_nombre}</td>
                     <td>${productos.pro_cantidad}</td>
-                    <td><img  src="${productos.pro_imagen}" height="35" width="50"  ></td>
+                    <td>${productos.pro_valor}</td>
+                    <td><img  src="${productos.pro_imagen}"  height="35" width="50"  ></td>
+                    
                 </tr>
                 `
+
 
             })
             document.getElementById("tbody").innerHTML=$data
@@ -51,7 +55,11 @@ class Productos extends React.Component {
             document.getElementById("modal").classList.add('active')
 
     }
+    activarModalA(){
+        document.getElementById('modal-overlayA').style.animation = 'modalIn .8s forwards'
+            document.getElementById("modalA").classList.add('active')
 
+    }
     render() {
 
         if(this.state.loading === true){
@@ -68,6 +76,7 @@ class Productos extends React.Component {
                 <section className="container">
                    <div className="containerProductos">
                     <button onClick={this.activarModal}>+</button>
+                    <button onClick={this.activarModalA}>-</button>
                     </div>
                     <div className="modal-vista" tabindex="-1" role="dialog">
 
@@ -77,6 +86,7 @@ class Productos extends React.Component {
                                     <th className="sticky">id</th>
                                     <th className="sticky">nombre del producto</th>
                                     <th className="sticky">cantidad del producto</th>
+                                    <th className="sticky">valor del producto</th>
                                     <th className="sticky">imagen del producto</th>
 
                                 </tr>
@@ -93,6 +103,7 @@ class Productos extends React.Component {
                 </section>
 
                 <NewProducto/>
+                <UpdateProducto/>
 
             </React.Fragment>
 

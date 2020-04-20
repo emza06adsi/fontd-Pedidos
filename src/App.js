@@ -7,7 +7,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 // pages
 import NoLayout from './components/noLayout'
 import Layout from './components/layout'
-import Login from './pages/login'
+// import Login from './pages/login'
+import Ingreso from './pages/login'
 import Master from './pages/master'
 import PedidosRealizados from './pages/pedidosRealizados'
 import Clientes from './pages/clientes'
@@ -23,7 +24,7 @@ function App() {
         <BrowserRouter>
 
                 <Switch>
-                    <Route exact path="/" component={Login} />
+                    <Route exact path="/" component={Ingreso} />
 
       
                 <Layout>

@@ -43,19 +43,10 @@ const api = {
       return callApi(`/api/pedidos/${id}`);
     },
     
-    create(badge) {
-      return callApi(`/badges`, {
-        method: 'POST',
-        body: JSON.stringify(badge),
-      });
-    },
-    read(badgeId) {
-      return callApi(`/badges/${badgeId}`);
-    },
-    update(badgeId, updates) {
-      return callApi(`/badges/${badgeId}`, {
+    updateProductos(data) {
+      return callApi(`/api/tienda/`, {
         method: 'PUT',
-        body: JSON.stringify(updates),
+        body: JSON.stringify(data),
       });
     },
     // Lo hubiera llamado `delete`, pero `delete` es un keyword en JavaScript asi que no es buena idea :P
@@ -68,3 +59,14 @@ const api = {
 };
 
 export default api;
+
+
+// create(badge) {
+//   return callApi(`/badges`, {
+//     method: 'POST',
+//     body: JSON.stringify(badge),
+//   });
+// },
+// read(badgeId) {
+//   return callApi(`/badges/${badgeId}`);
+// },

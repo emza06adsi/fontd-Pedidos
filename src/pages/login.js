@@ -19,7 +19,7 @@ cambiotipo(){
 
     render() {
         return (
-            <div className="modal" id="modal">
+            <div className="login" id="login">
                 <h1>INICIO DE SESION </h1>
 
                 <form action="" method="get" className="input">
@@ -45,7 +45,7 @@ cambiotipo(){
                             </span>
                         </div>
                     </div>
-                    <button class="modal-btn" id="btnIngresar">INGRESAR</button>
+                    <button class="login-btn" id="btnIngresar">INGRESAR</button>
 
                 </form>
                 <a href="">olvidaste tu contraseña</a>
