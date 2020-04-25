@@ -49,6 +49,12 @@ const api = {
         body: JSON.stringify(data),
       });
     },
+    logearUsuario(data) {
+      return callApi(`/auth/login`, {
+        method: 'post',
+        body: JSON.stringify(data),
+      });
+    },
     // Lo hubiera llamado `delete`, pero `delete` es un keyword en JavaScript asi que no es buena idea :P
     remove(badgeId) {
       return callApi(`/badges/${badgeId}`, {
