@@ -9,7 +9,7 @@ class Header extends React.Component {
             <img src="" />
             <div className="header__menu">
               <div className="header__menu--profile">
-                <p>Usuario</p>
+        <p>{document.cookie}</p>
               </div>
               
               <ul>

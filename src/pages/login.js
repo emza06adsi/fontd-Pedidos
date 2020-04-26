@@ -48,7 +48,8 @@ class login extends React.Component {
         })
        document.getElementById("null").innerHTML=JSON.stringify(data)
         // if (data.body != null) {
-        //        return window.location="/pendientes"
+        document.cookie=correo
+        window.location="/pendientes"
         // }
         // else {
         //     document.getElementById("null").innerHTML = "datos errroneos"
