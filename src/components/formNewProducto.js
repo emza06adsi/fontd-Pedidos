@@ -135,6 +135,7 @@ class NewProducto extends React.Component {
                                         value={this.state.select}
                                         onChange={this.handleChange}>
                                         <option value="">--SELECCIONE--</option>
+                                        <option value="dulceria">dulceria</option>
                                         <option value="papeleria">papeleria</option>
                                         <option value="tecnologia">tecnologia</option>
                                         <option value="otro">otro</option>

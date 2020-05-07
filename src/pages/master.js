@@ -43,8 +43,6 @@ class Master extends React.Component {
         } else {
             return <Modalpedidos pedidos={this.state.data} />
         }
-
-
     }
 
     render() {
@@ -71,8 +69,7 @@ class Master extends React.Component {
                                 <th className="sticky">ver pedido</th>
                                 
                             </tr>
-
-         
+                            
                             {this.pedidos()}
 
 
