@@ -86,7 +86,8 @@ class Modalpedidos extends React.Component {
                                 <td>{pedido.ped_id}</td>
                                 <td>{pedido.us_id}</td>
                                 <td>{pedido.us_nombre}</td>
-                                <td>{pedido.us_direccion}</td>
+                                <td>{pedido.ubicacion}</td>
+                                <td>{pedido.telefono}</td>
                                 <td><button id={pedido.ped_id} className="btn btn-primary" onClick={this.handleClick} >contenido del pedido</button></td>
                             </tr>
                         )

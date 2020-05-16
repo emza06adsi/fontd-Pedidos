@@ -69,6 +69,7 @@ class PedidosRealizados extends React.Component {
                                 <th className="sticky">numero de usuario</th>
                                 <th className="sticky">nombre del usuario</th>
                                 <th className="sticky">direccion del pedido</th>
+                                <th className="sticky">telefono del pedido</th>
                                 <th className="sticky">ver pedido</th>
                                 
                             </tr>
