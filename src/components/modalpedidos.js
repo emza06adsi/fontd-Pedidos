@@ -90,7 +90,7 @@ class Modalpedidos extends React.Component {
                                 <td>{pedido.telefono}</td>
                                 <td><button id={pedido.ped_id} className="btn btn-primary" onClick={this.handleClick} >contenido del pedido</button></td>
                             </tr>
-                        )
+                          )
                     })
                 }
 
