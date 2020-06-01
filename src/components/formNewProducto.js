@@ -90,11 +90,13 @@ class NewProducto extends React.Component {
             tipo:this.state.select,
             cantidad: this.state.cantidad,
             precio: this.state.precio,
-            file: datosprueba
+            file:this.state.direccionImg
+            // file: datosprueba
         }
         // api.tienda.crearProducto(datosEnvio,axios)
-        axios.post("http://localhost:3001/api/tienda/", datosEnvio, {
-        }).then(res => {
+        axios.post("https://api-a-tu-servicio.herokuapp.com/api/tienda/", datosEnvio, {
+                
+    }).then(res => {
           alert("error")
         })
         // alert(JSON.stringify(datosEnvio))
@@ -168,6 +170,16 @@ class NewProducto extends React.Component {
                                         value={this.state.precioProducto}
                                         required type="number"
                                         placeholder="precio del producto"
+                                    ></input>
+                                </div>
+                                <div className="camposForm">
+                                    <label for="exampleInputEmail1">direcciónImg:</label>
+                                    <input
+                                        name="direccionImg"
+                                        onChange={this.handleChange}
+                                        value={this.state.direccionImg}
+                                        required type="text"
+                                        placeholder="direcciónImg del producto"
                                     ></input>
                                 </div>
                                 <div className="camposForm">

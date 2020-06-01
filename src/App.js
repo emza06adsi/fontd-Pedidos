@@ -1,10 +1,5 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-
-
-
-
-// pages
 import NoLayout from './components/noLayout'
 import Layout from './components/layout'
 // import Login from './pages/login'
